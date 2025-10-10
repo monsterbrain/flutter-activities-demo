@@ -19,6 +19,7 @@ import '../style/confetti.dart';
 import '../style/my_button.dart';
 import '../style/palette.dart';
 import 'game_widget.dart';
+import 'guess_and_flip_game.dart';
 
 /// This widget defines the entirety of the screen that the player sees when
 /// they are playing a level.
@@ -93,9 +94,11 @@ class _PlaySessionScreenState extends State<PlaySessionScreen> {
                     ),
                   ),
                   const Spacer(),
-                  const Expanded(
+                  Expanded(
                     // The actual UI of the game.
-                    child: GameWidget(),
+                    child: widget.level.type == LevelType.tapper
+                        ? const GuessAndFlipGame()
+                        : const GameWidget(),
                   ),
                   const Spacer(),
                   Padding(

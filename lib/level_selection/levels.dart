@@ -2,10 +2,16 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+enum LevelType {
+  slider,
+  tapper,
+}
+
 const gameLevels = [
   GameLevel(
     number: 1,
     difficulty: 5,
+    type: LevelType.tapper,
     // TODO: When ready, change these achievement IDs.
     // You configure this in App Store Connect.
     achievementIdIOS: 'first_win',
@@ -26,6 +32,8 @@ class GameLevel {
 
   final int difficulty;
 
+  final LevelType type;
+
   /// The achievement to unlock when the level is finished, if any.
   final String? achievementIdIOS;
 
@@ -36,6 +44,7 @@ class GameLevel {
   const GameLevel({
     required this.number,
     required this.difficulty,
+    this.type = LevelType.slider,
     this.achievementIdIOS,
     this.achievementIdAndroid,
   }) : assert(
