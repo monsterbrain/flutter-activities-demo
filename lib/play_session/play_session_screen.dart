@@ -18,14 +18,10 @@ import '../player_progress/player_progress.dart';
 import '../style/confetti.dart';
 import '../style/my_button.dart';
 import '../style/palette.dart';
+import 'coloring_game.dart';
 import 'game_widget.dart';
 import 'guess_and_flip_game.dart';
 
-/// This widget defines the entirety of the screen that the player sees when
-/// they are playing a level.
-///
-/// It is a stateful widget because it manages some state of its own,
-/// such as whether the game is in a "celebration" state.
 class PlaySessionScreen extends StatefulWidget {
   final GameLevel level;
 
@@ -60,28 +56,24 @@ class _PlaySessionScreenState extends State<PlaySessionScreen> {
     return MultiProvider(
       providers: [
         Provider.value(value: widget.level),
-        // Create and provide the [LevelState] object that will be used
-        // by widgets below this one in the widget tree.
         ChangeNotifierProvider(
           create: (context) =>
               LevelState(goal: widget.level.difficulty, onWin: _playerWon),
         ),
       ],
       child: IgnorePointer(
-        // Ignore all input during the celebration animation.
         ignoring: _duringCelebration,
         child: Scaffold(
           backgroundColor: palette.backgroundPlaySession,
-          // The stack is how you layer widgets on top of each other.
-          // Here, it is used to overlay the winning confetti animation on top
-          // of the game.
           body: Stack(
             children: [
-              // This is the main layout of the play session screen,
-              // with a settings button on top, the actual play area
-              // in the middle, and a back button at the bottom.
+              switch (widget.level.type) {
+                LevelType.tapper => const Center(child: GuessAndFlipGame()),
+                LevelType.slider => const Center(child: GameWidget()),
+                LevelType.coloring => const ColoringGame(),
+              },
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Align(
                     alignment: Alignment.centerRight,
@@ -93,14 +85,6 @@ class _PlaySessionScreenState extends State<PlaySessionScreen> {
                       ),
                     ),
                   ),
-                  const Spacer(),
-                  Expanded(
-                    // The actual UI of the game.
-                    child: widget.level.type == LevelType.tapper
-                        ? const GuessAndFlipGame()
-                        : const GameWidget(),
-                  ),
-                  const Spacer(),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: MyButton(
@@ -110,8 +94,6 @@ class _PlaySessionScreenState extends State<PlaySessionScreen> {
                   ),
                 ],
               ),
-              // This is the confetti animation that is overlaid on top of the
-              // game when the player wins.
               SizedBox.expand(
                 child: Visibility(
                   visible: _duringCelebration,
@@ -150,7 +132,6 @@ class _PlaySessionScreenState extends State<PlaySessionScreen> {
     final audioController = context.read<AudioController>();
     audioController.playSfx(SfxType.congrats);
 
-    /// Give the player some time to see the celebration animation.
     await Future<void>.delayed(_celebrationDuration);
     if (!mounted) return;
 

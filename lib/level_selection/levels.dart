@@ -5,6 +5,7 @@
 enum LevelType {
   slider,
   tapper,
+  coloring,
 }
 
 const gameLevels = [
@@ -18,9 +19,15 @@ const gameLevels = [
     // You get this string when you configure an achievement in Play Console.
     achievementIdAndroid: 'NhkIwB69ejkMAOOLDb',
   ),
-  GameLevel(number: 2, difficulty: 42),
   GameLevel(
-    number: 3,
+    number: 2,
+    difficulty: 10,
+    type: LevelType.coloring,
+    name: 'Coloring Level',
+  ),
+  GameLevel(number: 3, difficulty: 42),
+  GameLevel(
+    number: 4,
     difficulty: 100,
     achievementIdIOS: 'finished',
     achievementIdAndroid: 'CdfIhE96aspNWLGSQg',
@@ -31,6 +38,8 @@ class GameLevel {
   final int number;
 
   final int difficulty;
+
+  final String? name;
 
   final LevelType type;
 
@@ -44,6 +53,7 @@ class GameLevel {
   const GameLevel({
     required this.number,
     required this.difficulty,
+    this.name,
     this.type = LevelType.slider,
     this.achievementIdIOS,
     this.achievementIdAndroid,

@@ -3,6 +3,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:provider/provider.dart';
+
+import '../game_internals/level_state.dart';
+
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
   // Override behavior methods and getters like dragDevices
   @override
@@ -42,6 +46,7 @@ class _GuessAndFlipGameState extends State<GuessAndFlipGame> {
   late PageController _pageController;
   double _currentPage = 0.0;
   final List<bool> _isFlipped = List.filled(15, false);
+  int _tapCount = 0;
 
   @override
   void initState() {
@@ -58,6 +63,13 @@ class _GuessAndFlipGameState extends State<GuessAndFlipGame> {
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+
+  void _handleTap() {
+    _tapCount++;
+    if (_tapCount == 3) {
+      context.read<LevelState>().onWin();
+    }
   }
 
   @override
@@ -81,6 +93,7 @@ class _GuessAndFlipGameState extends State<GuessAndFlipGame> {
                       setState(() {
                         _isFlipped[index] = !_isFlipped[index];
                       });
+                      _handleTap();
                     },
                     child: TweenAnimationBuilder(
                       tween: Tween<double>(
