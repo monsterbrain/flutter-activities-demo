@@ -6,6 +6,7 @@ enum LevelType {
   slider,
   tapper,
   coloring,
+  matching,
 }
 
 const gameLevels = [
@@ -25,7 +26,12 @@ const gameLevels = [
     type: LevelType.coloring,
     name: 'Coloring Level',
   ),
-  GameLevel(number: 3, difficulty: 42),
+  GameLevel(
+    number: 3,
+    difficulty: 3,
+    type: LevelType.matching,
+    name: 'matching_level',
+  ),
   GameLevel(
     number: 4,
     difficulty: 100,

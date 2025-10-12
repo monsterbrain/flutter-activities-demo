@@ -21,6 +21,7 @@ import '../style/palette.dart';
 import 'coloring_game.dart';
 import 'game_widget.dart';
 import 'guess_and_flip_game.dart';
+import 'matching_game.dart';
 
 class PlaySessionScreen extends StatefulWidget {
   final GameLevel level;
@@ -71,6 +72,7 @@ class _PlaySessionScreenState extends State<PlaySessionScreen> {
                 LevelType.tapper => const Center(child: GuessAndFlipGame()),
                 LevelType.slider => const Center(child: GameWidget()),
                 LevelType.coloring => const ColoringGame(),
+                LevelType.matching => const Center(child: MatchingGame()),
               },
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
