@@ -8,13 +8,29 @@ import 'package:provider/provider.dart';
 
 import '../audio/audio_controller.dart';
 import '../audio/sounds.dart';
+import '../remote_config/remote_config_service.dart';
 import '../settings/settings.dart';
 import '../style/my_button.dart';
 import '../style/palette.dart';
 import '../style/responsive_screen.dart';
 
-class MainMenuScreen extends StatelessWidget {
+class MainMenuScreen extends StatefulWidget {
   const MainMenuScreen({super.key});
+
+  @override
+  State<MainMenuScreen> createState() => _MainMenuScreenState();
+}
+
+class _MainMenuScreenState extends State<MainMenuScreen> {
+  late final RemoteConfigService _remoteConfigService;
+  late String _season;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _remoteConfigService = context.read<RemoteConfigService>();
+    _season = _remoteConfigService.season;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +44,10 @@ class MainMenuScreen extends StatelessWidget {
         squarishMainArea: Center(
           child: Transform.rotate(
             angle: -0.1,
-            child: const Text(
-              'Flutter Game Template!',
+            child: Text(
+              'Flutter Game Template! ($_season)',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'Permanent Marker',
                 fontSize: 55,
                 height: 1,
