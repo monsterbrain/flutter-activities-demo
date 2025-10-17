@@ -41,50 +41,66 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: "AIzaSyAnDniIEw2I4caBDtPloQHnx6sKxsdKicY",
-    authDomain: "zameel-activities.firebaseapp.com",
+    apiKey: 'AIzaSyAnDniIEw2I4caBDtPloQHnx6sKxsdKicY',
+    appId: '1:12936307916:web:ca0612b09dfd7aab6f0e69',
+    messagingSenderId: '12936307916',
+    projectId: 'zameel-activities',
+    authDomain: 'zameel-activities.firebaseapp.com',
     databaseURL:
-        "https://zameel-activities-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "zameel-activities",
-    storageBucket: "zameel-activities.firebasestorage.app",
-    messagingSenderId: "12936307916",
-    appId: "1:12936307916:web:ca0612b09dfd7aab6f0e69",
-    measurementId: "G-1HZQQT0CH1",
+        'https://zameel-activities-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'zameel-activities.firebasestorage.app',
+    measurementId: 'G-1HZQQT0CH1',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'YOUR_API_KEY',
-    appId: 'YOUR_APP_ID',
-    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-    projectId: 'YOUR_PROJECT_ID',
-    storageBucket: 'YOUR_STORAGE_BUCKET',
+    apiKey: 'AIzaSyC32Ypw69HGOQihZjzA_OeHSGkKUb8KHWs',
+    appId: '1:12936307916:android:ce53a6a6706e18006f0e69',
+    messagingSenderId: '12936307916',
+    projectId: 'zameel-activities',
+    databaseURL:
+        'https://zameel-activities-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'zameel-activities.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'YOUR_API_KEY',
-    appId: 'YOUR_APP_ID',
-    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-    projectId: 'YOUR_PROJECT_ID',
-    storageBucket: 'YOUR_STORAGE_BUCKET',
-    iosClientId: 'YOUR_IOS_CLIENT_ID',
-    iosBundleId: 'YOUR_IOS_BUNDLE_ID',
+    apiKey: 'AIzaSyDo14TBSenlcK7hGy-9He5c-D-UDVitHd8',
+    appId: '1:12936307916:ios:88c33eb53c2dc7066f0e69',
+    messagingSenderId: '12936307916',
+    projectId: 'zameel-activities',
+    databaseURL:
+        'https://zameel-activities-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'zameel-activities.firebasestorage.app',
+    androidClientId:
+        '12936307916-h4rdgs0fmfb7h049ong7ssn0ng4nsq9q.apps.googleusercontent.com',
+    iosClientId:
+        '12936307916-1sc6ltqjoltmquebjn52jegr82f36qqb.apps.googleusercontent.com',
+    iosBundleId: 'com.zameelapp.activities',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'YOUR_API_KEY',
-    appId: 'YOUR_APP_ID',
-    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-    projectId: 'YOUR_PROJECT_ID',
-    storageBucket: 'YOUR_STORAGE_BUCKET',
-    iosClientId: 'YOUR_IOS_CLIENT_ID',
-    iosBundleId: 'YOUR_IOS_BUNDLE_ID',
+    apiKey: 'AIzaSyDo14TBSenlcK7hGy-9He5c-D-UDVitHd8',
+    appId: '1:12936307916:ios:1a450733ad9285876f0e69',
+    messagingSenderId: '12936307916',
+    projectId: 'zameel-activities',
+    databaseURL:
+        'https://zameel-activities-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'zameel-activities.firebasestorage.app',
+    androidClientId:
+        '12936307916-h4rdgs0fmfb7h049ong7ssn0ng4nsq9q.apps.googleusercontent.com',
+    iosClientId:
+        '12936307916-cqgpdkpej2g3ccodke4onmpj25p3c2vc.apps.googleusercontent.com',
+    iosBundleId: 'com.example.basic',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'YOUR_API_KEY',
-    appId: 'YOUR_APP_ID',
-    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-    projectId: 'YOUR_PROJECT_ID',
-    storageBucket: 'YOUR_STORAGE_BUCKET',
+    apiKey: 'AIzaSyAnDniIEw2I4caBDtPloQHnx6sKxsdKicY',
+    appId: '1:12936307916:web:ed3d4d1eedca07686f0e69',
+    messagingSenderId: '12936307916',
+    projectId: 'zameel-activities',
+    authDomain: 'zameel-activities.firebaseapp.com',
+    databaseURL:
+        'https://zameel-activities-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'zameel-activities.firebasestorage.app',
+    measurementId: 'G-8GF2KZCLXE',
   );
 }
