@@ -1,14 +1,28 @@
+
 // Copyright 2022, the Flutter project authors. Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 import 'package:basic/main.dart';
+import 'package:basic/remote_config/remote_config_service.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'fake_firebase_remote_config.dart';
 
 void main() {
   testWidgets('smoke test', (tester) async {
+    // Create a fake remote config service.
+    final remoteConfigService = RemoteConfigService.testing(
+      FakeFirebaseRemoteConfig(),
+    );
+    // Initialize the remote config service.
+    await remoteConfigService.init();
+
     // Build our game and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(
+      MyApp(
+        remoteConfigService: remoteConfigService,
+      ),
+    );
 
     // Verify that the 'Play' button is shown.
     expect(find.text('Play'), findsOneWidget);

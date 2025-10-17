@@ -18,6 +18,9 @@ class RemoteConfigService {
   // A private constructor.
   RemoteConfigService._(this._remoteConfig);
 
+  @visibleForTesting
+  RemoteConfigService.testing(this._remoteConfig);
+
   // A static factory method that creates a new instance of the service.
   static Future<RemoteConfigService> create() async {
     final remoteConfig = FirebaseRemoteConfig.instance;
