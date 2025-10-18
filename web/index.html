@@ -22,7 +22,7 @@
   <meta property="og:description" content="A fun and engaging app with various activities for all ages.">
 
   <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Zameel Activities v0.1">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
@@ -32,8 +32,62 @@
 
   <title>Zameel Activities v0.1</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    .loading-indicator {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-family: sans-serif;
+    }
+
+    .loading-indicator img {
+      width: 64px;
+      height: 64px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Simple indeterminate progress bar */
+    .progress-bar {
+      width: 120px;
+      height: 10px;
+      border: 1px solid #ccc;
+      margin: 20px auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background-color: #4CAF50;
+      width: 40%;
+      position: absolute;
+      left: -50%;
+      animation: indeterminate-progress 1.5s linear infinite;
+    }
+
+    @keyframes indeterminate-progress {
+      from {
+        left: -50%;
+      }
+      to {
+        left: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="loading-indicator">
+    <img src="icons/Icon-192.png" alt="Loading icon">
+    <p>Loading...</p>
+    <div class="progress-bar">
+      <div class="progress-bar-fill"></div>
+    </div>
+  </div>
+
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
