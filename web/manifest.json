@@ -1,11 +1,11 @@
 {
-    "name": "basic",
-    "short_name": "basic",
+    "name": "Zameel Activities v0.1",
+    "short_name": "Zameel Activities",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A fun and engaging app with various activities for all ages.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
