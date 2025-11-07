@@ -210,3 +210,42 @@ or
 
 These warning come from the various plugins that are used by the template. They are not harmful 
 and can be ignored. The warnings are meant for the plugin authors, not for you, the game developer.
+
+### CI/CD Pipeline for Android
+
+This project includes a GitHub Actions workflow to automatically build and release your Android app bundle to the Google Play Console.
+
+**How it Works**
+
+The workflow is configured to trigger on every push to the `main` branch that includes the word "release" in the commit message. When triggered, it will:
+
+1.  Set up the build environment.
+2.  Build the Flutter app bundle.
+3.  Upload the app bundle to the alpha track on the Google Play Console.
+
+**Setup Instructions**
+
+1.  **Create a Google Play Console Service Account:**
+    *   Go to your [Google Play Console](https://play.google.com/console).
+    *   Navigate to **Users and permissions** > **API users**.
+    *   Click **Create new API user** and follow the instructions to create a service account.
+    *   Grant the service account at least the "Release Manager" role.
+    *   Download the JSON key file for the service account.
+
+2.  **Add GitHub Secret:**
+    *   In your GitHub repository, go to **Settings** > **Secrets and variables** > **Actions**.
+    *   Click **New repository secret**.
+    *   Name the secret `PLAY_STORE_CREDENTIALS`.
+    *   Paste the entire content of the JSON key file you downloaded into the secret's value field.
+
+3.  **Update Package Name (if necessary):**
+    *   The workflow file at `.github/workflows/android_release.yml` is pre-configured with the package name `com.zameelapp.activities`. If your app's package name is different, you must update this value in the workflow file.
+
+**Triggering the Workflow**
+
+To trigger the release, simply push a commit to the `main` branch with a commit message containing the word "release". For example:
+
+```
+git commit -m "feat: implement new feature for release"
+git push origin main
+```

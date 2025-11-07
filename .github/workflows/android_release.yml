@@ -1,0 +1,42 @@
+name: Build and Release Android App Bundle
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+'release'if: "contains(github.event.head_commit.message, 'playstore-release')"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Install Flutter dependencies
+        run: flutter pub get
+
+      - name: Build App Bundle
+        run: flutter build appbundle
+
+      - name: Upload to Play Store
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_STORE_CREDENTIALS }}
+          packageName: com.zameelapp.activities
+          releaseFiles: build/app/outputs/bundle/release/app-release.aab
+          track: alpha
