@@ -1,0 +1,42 @@
+name: Distribute to Firebase App Distribution
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build-and-distribute:
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, 'firebase-release')"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Install Flutter dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Upload to Firebase App Distribution
+        uses: firebase-actions/app-distribution-action@v1
+        with:
+          appId: 1:12936307916:android:ce53a6a6706e18006f0e69
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: testers
+          file: build/app/outputs/flutter-apk/app-release.apk

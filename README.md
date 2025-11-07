@@ -170,6 +170,96 @@ Replace the placeholder values with your actual keystore information.
 
 **Important:** Keep this file private and do not check it into version control. Add `android/key.properties` to your `.gitignore` file.
 
+# CI/CD Pipelines
+
+This project includes GitHub Actions workflows to automate building and distributing your app.
+
+### Google Play Console Release
+
+This workflow builds and releases your Android app bundle to the Google Play Console.
+
+**How it Works**
+
+The workflow is configured to trigger on every push to the `main` branch that includes the word "release" in the commit message. When triggered, it will:
+
+1.  Set up the build environment.
+2.  Build the Flutter app bundle.
+3.  Upload the app bundle to the alpha track on the Google Play Console.
+
+**Setup Instructions**
+
+1.  **Create a Google Play Console Service Account:**
+    *   Go to your [Google Play Console](https://play.google.com/console).
+    *   Navigate to **Users and permissions** > **API users**.
+    *   Click **Create new API user** and follow the instructions to create a service account.
+    *   Grant the service account at least the "Release Manager" role.
+    *   Download the JSON key file for the service account.
+
+2.  **Add GitHub Secret:**
+    *   In your GitHub repository, go to **Settings** > **Secrets and variables** > **Actions**.
+    *   Click **New repository secret**.
+    *   Name the secret `PLAY_STORE_CREDENTIALS`.
+    *   Paste the entire content of the JSON key file you downloaded into the secret's value field.
+
+3.  **Update Package Name (if necessary):**
+    *   The workflow file at `.github/workflows/android_release.yml` is pre-configured with the package name `com.zameelapp.activities`. If your app's package name is different, you must update this value in the workflow file.
+
+**Triggering the Workflow**
+
+To trigger the release, simply push a commit to the `main` branch with a commit message containing the word "release". For example:
+
+```
+git commit -m "feat: implement new feature for release"
+git push origin main
+```
+
+### Firebase App Distribution
+
+This workflow automatically builds and distributes your Android app to testers via Firebase App Distribution.
+
+**How it Works**
+
+The workflow is configured to trigger on every push to the `main` branch that includes the word "distribute" in the commit message. When triggered, it will:
+
+1.  Set up the build environment.
+2.  Build the Flutter APK (release build).
+3.  Upload the APK to Firebase App Distribution and send it to the "testers" group.
+
+**Setup Instructions**
+
+1.  **Enable Firebase App Distribution:**
+    *   Go to the [Firebase Console](https://console.firebase.google.com/) and select your project.
+    *   In the left-hand menu, under "Release & Monitor", click on **App Distribution**.
+    *   If you haven't already, follow the on-screen instructions to get started.
+
+2.  **Get Firebase App ID:**
+    *   In the Firebase Console, go to **Project settings** (the gear icon next to "Project Overview").
+    *   Under the "General" tab, in the "Your apps" section, you'll find your Android app.
+    *   The **App ID** is listed there. The workflow is pre-configured with `1:12936307916:android:ce53a6a6706e18006f0e69`. Please verify that this is correct and update the `.github/workflows/firebase_app_distribution.yml` file if necessary.
+
+3.  **Get Firebase CI Token:**
+    *   You'll need the Firebase CLI installed on your local machine. If you don't have it, follow the instructions [here](https://firebase.google.com/docs/cli#install_the_cli).
+    *   Log in to Firebase using the CLI:
+        ```bash
+        firebase login:ci
+        ```
+    *   This command will open a browser window for you to log in. After you log in, it will print a refresh token to your terminal. This is your CI token.
+
+4.  **Add GitHub Secret:**
+    *   In your GitHub repository, go to **Settings** > **Secrets and variables** > **Actions**.
+    *   Click **New repository secret**.
+    *   Name the secret `FIREBASE_TOKEN`.
+    *   Paste the refresh token you obtained from the Firebase CLI into the secret's value field.
+
+**Triggering the Workflow**
+
+To trigger a distribution, simply push a commit to the `main` branch with a commit message containing the word "distribute". For example:
+
+```
+git commit -m "build: new version for testers to distribute"
+git push origin main
+```
+
 # Troubleshooting
 
 ## CocoaPods
@@ -210,42 +300,3 @@ or
 
 These warning come from the various plugins that are used by the template. They are not harmful 
 and can be ignored. The warnings are meant for the plugin authors, not for you, the game developer.
-
-### CI/CD Pipeline for Android
-
-This project includes a GitHub Actions workflow to automatically build and release your Android app bundle to the Google Play Console.
-
-**How it Works**
-
-The workflow is configured to trigger on every push to the `main` branch that includes the word "release" in the commit message. When triggered, it will:
-
-1.  Set up the build environment.
-2.  Build the Flutter app bundle.
-3.  Upload the app bundle to the alpha track on the Google Play Console.
-
-**Setup Instructions**
-
-1.  **Create a Google Play Console Service Account:**
-    *   Go to your [Google Play Console](https://play.google.com/console).
-    *   Navigate to **Users and permissions** > **API users**.
-    *   Click **Create new API user** and follow the instructions to create a service account.
-    *   Grant the service account at least the "Release Manager" role.
-    *   Download the JSON key file for the service account.
-
-2.  **Add GitHub Secret:**
-    *   In your GitHub repository, go to **Settings** > **Secrets and variables** > **Actions**.
-    *   Click **New repository secret**.
-    *   Name the secret `PLAY_STORE_CREDENTIALS`.
-    *   Paste the entire content of the JSON key file you downloaded into the secret's value field.
-
-3.  **Update Package Name (if necessary):**
-    *   The workflow file at `.github/workflows/android_release.yml` is pre-configured with the package name `com.zameelapp.activities`. If your app's package name is different, you must update this value in the workflow file.
-
-**Triggering the Workflow**
-
-To trigger the release, simply push a commit to the `main` branch with a commit message containing the word "release". For example:
-
-```
-git commit -m "feat: implement new feature for release"
-git push origin main
-```
