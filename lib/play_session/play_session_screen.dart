@@ -1,3 +1,4 @@
+
 // Copyright 2022, the Flutter project authors. Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
@@ -22,6 +23,7 @@ import 'coloring_game.dart';
 import 'game_widget.dart';
 import 'guess_and_flip_game.dart';
 import 'matching_game.dart';
+import 'prayer_sequence_game.dart';
 
 class PlaySessionScreen extends StatefulWidget {
   final GameLevel level;
@@ -73,6 +75,7 @@ class _PlaySessionScreenState extends State<PlaySessionScreen> {
                 LevelType.slider => const Center(child: GameWidget()),
                 LevelType.coloring => const ColoringGame(),
                 LevelType.matching => const Center(child: MatchingGame()),
+                LevelType.prayerSequence => const Center(child: PrayerSequenceGame()),
               },
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -125,7 +128,7 @@ class _PlaySessionScreenState extends State<PlaySessionScreen> {
 
     // Let the player see the game just after winning for a bit.
     await Future<void>.delayed(_preCelebrationDuration);
-    if (!mounted) return;
+if (!mounted) return;
 
     setState(() {
       _duringCelebration = true;

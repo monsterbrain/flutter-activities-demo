@@ -7,6 +7,7 @@ enum LevelType {
   tapper,
   coloring,
   matching,
+  prayerSequence, // New level type
 }
 
 const gameLevels = [
@@ -34,6 +35,12 @@ const gameLevels = [
   ),
   GameLevel(
     number: 4,
+    difficulty: 1, // Difficulty for this game is about completion
+    type: LevelType.prayerSequence,
+    name: 'Prayer Sequence',
+  ),
+  GameLevel(
+    number: 5,
     difficulty: 100,
     achievementIdIOS: 'finished',
     achievementIdAndroid: 'CdfIhE96aspNWLGSQg',
