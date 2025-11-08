@@ -253,10 +253,10 @@ The workflow is configured to trigger on every push to the `main` branch that in
 
 **Triggering the Workflow**
 
-To trigger a distribution, simply push a commit to the `main` branch with a commit message containing the word "distribute". For example:
+To trigger a distribution, simply push a commit to the `main` branch with a commit message containing the word "firebase-release". For example:
 
 ```
-git commit -m "build: new version for testers to distribute"
+git commit -m "build: new version for testers to distribute firebase-release"
 git push origin main
 ```
 
