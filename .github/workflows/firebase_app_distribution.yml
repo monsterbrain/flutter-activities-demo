@@ -29,7 +29,6 @@ jobs:
           channel: 'stable'
 
       - name: Create key.properties file
-        working-directory: android
         run: |
           echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" > key.properties
           echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> key.properties
