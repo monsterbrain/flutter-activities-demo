@@ -33,7 +33,7 @@ jobs:
           echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" > android/key.properties
           echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
           echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
-          echo "storeFile=app/zameel-activities.keystore" >> android/key.properties
+          echo "storeFile=zameel-activities.keystore" >> android/key.properties
 
       - name: Install Flutter dependencies
         run: flutter pub get
