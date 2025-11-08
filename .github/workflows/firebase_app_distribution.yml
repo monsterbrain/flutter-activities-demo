@@ -29,12 +29,11 @@ jobs:
           channel: 'stable'
 
       - name: Create key.properties file
-        working-directory: android
         run: |
-          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" > key.properties
-          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> key.properties
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> key.properties
-          echo "storeFile=app/zameel-activities.keystore" >> key.properties
+          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" > android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+          echo "storeFile=app/zameel-activities.keystore" >> android/key.properties
 
       - name: Install Flutter dependencies
         run: flutter pub get
