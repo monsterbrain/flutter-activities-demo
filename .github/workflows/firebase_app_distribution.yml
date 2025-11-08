@@ -52,4 +52,4 @@ jobs:
             build/app/outputs/flutter-apk/app-release.apk \
             --app 1:12936307916:android:ce53a6a6706e18006f0e69 \
             --groups testers \
-            --release-notes "Automated build on ${{ github.sha }}"
+            --release-notes "Automated build on git push ${{ github.sha }}"
