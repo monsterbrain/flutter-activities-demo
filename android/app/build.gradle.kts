@@ -12,19 +12,20 @@ plugins {
 }
 
 val keyProperties = Properties()
-val keyPropertiesFile = rootProject.file("android/key.properties")
+// Read the key.properties file from the android directory
+val keyPropertiesFile = rootProject.file("key.properties")
 if (keyPropertiesFile.exists()) {
     keyProperties.load(FileInputStream(keyPropertiesFile))
 }
 
 android {
-    namespace = "com.example.basic"
+    namespace = "org.wisdom.zameelactivities"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     signingConfigs {
@@ -37,7 +38,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     defaultConfig {
