@@ -50,6 +50,6 @@ jobs:
         run: |
           firebase appdistribution:distribute \
             build/app/outputs/flutter-apk/app-release.apk \
-            --app 1:12936307916:android:ce53a6a6706e18006f0e69 \
+            --app 1:12936307916:android:7f49d0628f28ff406f0e69 \
             --groups testers \
             --release-notes "Automated build on git push ${{ github.sha }}"
