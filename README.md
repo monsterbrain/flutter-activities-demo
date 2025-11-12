@@ -202,7 +202,7 @@ The workflow is configured to trigger on every push to the `main` branch that in
     *   Paste the entire content of the JSON key file you downloaded into the secret's value field.
 
 3.  **Update Package Name (if necessary):**
-    *   The workflow file at `.github/workflows/android_release.yml` is pre-configured with the package name `com.zameelapp.activities`. If your app's package name is different, you must update this value in the workflow file.
+    *   The workflow file at `.github/workflows/android_release.yml` is pre-configured with the package name `org.wisdom.zameelactivities`. If your app's package name is different, you must update this value in the workflow file.
 
 **Triggering the Workflow**
 

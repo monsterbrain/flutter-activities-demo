@@ -8,42 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:12936307916:android:ce53a6a6706e18006f0e69",
-        "android_client_info": {
-          "package_name": "com.zameelapp.activities"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "12936307916-uvoc5d6t5cp83rhlr8ens3eot147m4h6.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC32Ypw69HGOQihZjzA_OeHSGkKUb8KHWs"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "12936307916-uvoc5d6t5cp83rhlr8ens3eot147m4h6.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "12936307916-1sc6ltqjoltmquebjn52jegr82f36qqb.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.zameelapp.activities"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:12936307916:android:7f49d0628f28ff406f0e69",
         "android_client_info": {
           "package_name": "org.wisdom.zameelactivities"
@@ -87,7 +51,7 @@
               "client_id": "12936307916-1sc6ltqjoltmquebjn52jegr82f36qqb.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.zameelapp.activities"
+                "bundle_id": "org.wisdom.zameelactivities"
               }
             }
           ]

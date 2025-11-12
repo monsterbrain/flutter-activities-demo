@@ -73,8 +73,8 @@ class DefaultFirebaseOptions {
     androidClientId:
         '12936307916-h4rdgs0fmfb7h049ong7ssn0ng4nsq9q.apps.googleusercontent.com',
     iosClientId:
-        '12936307916-1sc6ltqjoltmquebjn52jegr82f36qqb.apps.googleusercontent.com',
-    iosBundleId: 'com.zameelapp.activities',
+        '12936307916-pmfnkunfjpjpdvggk1ohmsv8q1dp84sf.apps.googleusercontent.com',
+    iosBundleId: 'org.wisdom.zameelactivities',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
