@@ -8,6 +8,7 @@ enum LevelType {
   coloring,
   matching,
   prayerSequence, // New level type
+  tracing,
 }
 
 const gameLevels = [
@@ -44,6 +45,12 @@ const gameLevels = [
     difficulty: 100,
     achievementIdIOS: 'finished',
     achievementIdAndroid: 'CdfIhE96aspNWLGSQg',
+  ),
+  GameLevel(
+    number: 6,
+    difficulty: 2,
+    type: LevelType.tracing,
+    name: 'Letter Tracing',
   ),
 ];
 

@@ -24,6 +24,7 @@ import 'game_widget.dart';
 import 'guess_and_flip_game.dart';
 import 'matching_game.dart';
 import 'prayer_sequence_game.dart';
+import 'tracing_game.dart';
 
 class PlaySessionScreen extends StatefulWidget {
   final GameLevel level;
@@ -76,6 +77,7 @@ class _PlaySessionScreenState extends State<PlaySessionScreen> {
                 LevelType.coloring => const ColoringGame(),
                 LevelType.matching => const Center(child: MatchingGame()),
                 LevelType.prayerSequence => const Center(child: PrayerSequenceGame()),
+                LevelType.tracing => const Center(child: TracingGameScreen()),
               },
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
